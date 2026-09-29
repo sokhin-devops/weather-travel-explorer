@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather &amp; Travel Explorer | Kev Channoeurn</title>
+    <meta name="description" content="A responsive weather exploration application that lets users search cities and view current and forecast weather information. Built with React by Kev Channoeurn." />
+    <meta name="author" content="Kev Channoeurn" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#07080a" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Weather &amp; Travel Explorer | Kev Channoeurn" />
+    <meta property="og:description" content="A responsive weather exploration application that lets users search cities and view current and forecast weather information." />
+
+    <!-- Apply the saved theme before React loads, to avoid a flash of the wrong theme. -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('weather-travel-explorer:theme')
+          var mode = saved === 'light' || saved === 'dark' || saved === 'system' ? saved : 'dark'
+          var resolved =
+            mode === 'system'
+              ? window.matchMedia('(prefers-color-scheme: light)').matches
+                ? 'light'
+                : 'dark'
+              : mode
+          document.documentElement.dataset.theme = resolved
+        } catch (error) {
+          document.documentElement.dataset.theme = 'dark'
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <noscript>This app needs JavaScript enabled to run.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

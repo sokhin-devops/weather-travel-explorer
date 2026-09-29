@@ -1,0 +1,4 @@
+/* Global styles. The app imports its own CSS from src/features. */
+@import './tokens.css';
+@import './base.css';
+@import './shell.css';

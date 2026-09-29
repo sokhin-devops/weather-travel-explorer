@@ -1,0 +1,149 @@
+/* Page shell around the app: top bar, theme switcher and footer. */
+
+.page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(60% 45% at 50% 0%, var(--project-glow), transparent 70%),
+    radial-gradient(40% 35% at 100% 100%, var(--project-accent-soft), transparent 70%),
+    var(--bg);
+  background-attachment: fixed;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--border);
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+}
+
+.topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: 1360px;
+  min-height: 56px;
+  margin-inline: auto;
+  padding: 8px var(--gutter);
+}
+
+.topbar__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 10px;
+  min-width: 0;
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.topbar__style {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-3);
+}
+
+.page__main {
+  flex: 1;
+  width: 100%;
+  max-width: 1360px;
+  margin-inline: auto;
+  padding: clamp(12px, 2.5vw, 28px) var(--gutter) 32px;
+}
+
+/* The app sits in a rounded frame. */
+.page__main > :not(h1) {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.page__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  width: 100%;
+  max-width: 1360px;
+  margin-inline: auto;
+  padding: 0 var(--gutter) 28px;
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+.page__footer a {
+  border-radius: 4px;
+  color: var(--text-2);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.page__footer a:hover {
+  color: var(--text);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Theme switcher ---------- */
+
+.theme-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 11px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.theme-switcher__option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 30px;
+  height: 28px;
+  padding: 0 7px;
+  border-radius: 8px;
+  color: var(--text-3);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.theme-switcher__option:hover {
+  color: var(--text);
+}
+
+.theme-switcher__option.is-active {
+  color: var(--text);
+  background: var(--surface-3);
+  box-shadow:
+    inset 0 0 0 1px var(--border-strong),
+    var(--shadow-sm);
+}
+
+.theme-switcher__option:has(input:focus-visible) {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 1px;
+}
+
+.theme-switcher--labels .theme-switcher__option {
+  height: 34px;
+  padding: 0 12px;
+}
